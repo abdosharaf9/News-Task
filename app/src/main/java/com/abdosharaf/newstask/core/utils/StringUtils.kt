@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter
 fun getLoremString(words: Int) =
     LoremIpsum(words = words).values.iterator().asSequence().joinToString(" ")
 
-fun stringToDate(date: String, context: Context): String {
+fun stringToDate(date: String, pattern: String, context: Context): String {
     return try {
         val parsedDate = OffsetDateTime.parse(date).toLocalDate()
         val today = LocalDate.now()
@@ -19,7 +19,7 @@ fun stringToDate(date: String, context: Context): String {
         when (parsedDate) {
             today -> context.getString(R.string.today)
             yesterday -> context.getString(R.string.yesterday)
-            else -> parsedDate.format(DateTimeFormatter.ofPattern("MMM dd',' yyyy"))
+            else -> parsedDate.format(DateTimeFormatter.ofPattern(pattern))
         }
     } catch (t: Throwable) {
         ""

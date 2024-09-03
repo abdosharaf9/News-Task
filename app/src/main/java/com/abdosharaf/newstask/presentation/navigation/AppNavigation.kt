@@ -23,8 +23,8 @@ fun AppNavigation(
     ) {
         composable<HomeRoute> {
             HomeScreen(
-                navigateToDetails = { article ->
-                    navController.navigate(DetailsRoute(article = article))
+                navigateToDetails = { article, category ->
+                    navController.navigate(DetailsRoute(article = article, category = category))
                 }
             )
         }
@@ -38,6 +38,7 @@ fun AppNavigation(
 
             DetailsScreen(
                 article = args.article,
+                category = args.category,
                 navigateBack = { navController.navigateUp() }
             )
         }

@@ -63,7 +63,7 @@ private fun HomeScreenPreview() {
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
-    navigateToDetails: (DomainArticle) -> Unit,
+    navigateToDetails: (DomainArticle, String) -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -77,7 +77,7 @@ fun HomeScreen(
 @Composable
 private fun HomeScreenContent(
     uiState: HomeUIState = HomeUIState(),
-    navigateToDetails: (DomainArticle) -> Unit = {},
+    navigateToDetails: (DomainArticle, String) -> Unit = { _, _ -> },
     handleActions: (HomeAction) -> Unit = {},
 ) {
     Column(
@@ -111,7 +111,7 @@ private fun HomeScreenContent(
             isLoading = uiState.isLoading,
             articles = uiState.articles,
             resultCount = uiState.resultCount,
-            onArticleClicked = navigateToDetails
+            onArticleClicked = { navigateToDetails(it, uiState.selectedCategory.label) }
         )
     }
 }

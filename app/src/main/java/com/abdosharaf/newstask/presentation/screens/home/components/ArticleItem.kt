@@ -111,7 +111,11 @@ fun ArticleItem(
                 Spacer(modifier = Modifier.width(4.dp))
 
                 Text(
-                    text = stringToDate(date = article.publishedAt, context = context),
+                    text = stringToDate(
+                        date = article.publishedAt,
+                        pattern = "MMM dd',' yyyy",
+                        context = context
+                    ),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
                 )
