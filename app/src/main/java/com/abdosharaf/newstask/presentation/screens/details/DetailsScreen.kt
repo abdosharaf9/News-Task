@@ -19,6 +19,7 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -151,7 +152,7 @@ private fun ColumnScope.ContentSection(
                     pattern = "EEEE dd MMM yyyy",
                     context = context
                 )
-            } • $category",
+            } • $category • ${article.source}",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f),
             modifier = Modifier.padding(horizontal = 16.dp)
@@ -209,6 +210,31 @@ private fun ColumnScope.ContentSection(
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
             }
+
+            if (article.author.isNotEmpty()) {
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Edit,
+                        contentDescription = "Written by",
+                        tint = MaterialTheme.colorScheme.onBackground,
+                        modifier = Modifier.size(16.dp)
+                    )
+
+                    Text(
+                        text = article.author,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onBackground,
+                        modifier = Modifier.padding(start = 8.dp)
+                    )
+                }
+            }
         }
     }
 }
@@ -236,6 +262,7 @@ private fun BrowserButton(
             Icon(
                 painter = painterResource(id = R.drawable.ic_browser),
                 contentDescription = null,
+                tint = MaterialTheme.colorScheme.onPrimary,
                 modifier = Modifier.size(24.dp)
             )
 
