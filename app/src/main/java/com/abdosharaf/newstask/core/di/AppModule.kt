@@ -1,7 +1,7 @@
 package com.abdosharaf.newstask.core.di
 
-import com.abdosharaf.newstask.core.Constants.BASE_URL
-import com.abdosharaf.newstask.core.Constants.TAG
+import com.abdosharaf.newstask.core.utils.Constants.BASE_URL
+import com.abdosharaf.newstask.core.utils.Constants.TAG
 import com.abdosharaf.newstask.data.api.NewsApi
 import com.abdosharaf.newstask.data.repository.NewsRepositoryImpl
 import com.abdosharaf.newstask.domain.repository.NewsRepository
@@ -47,6 +47,10 @@ object AppModule {
             client(okHttpClient)
         }.build()
     }
+
+    @Provides
+    @Singleton
+    fun provideNewsApi(retrofit: Retrofit): NewsApi = retrofit.create(NewsApi::class.java)
 
     @Provides
     @Singleton

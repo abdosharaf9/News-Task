@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.daggerHilt)
     alias(libs.plugins.kotlinKapt)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -96,6 +97,7 @@ dependencies {
 
     // Compose Navigation
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
 
     // Timber
     implementation(libs.timber)
