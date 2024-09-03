@@ -15,6 +15,16 @@ val fontFamily = FontFamily(
 )
 
 val Typography = Typography(
+    headlineLarge = TextStyle(
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 32.sp
+    ),
+    titleMedium = TextStyle(
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp
+    ),
     bodyMedium = TextStyle(
         fontFamily = fontFamily,
         fontWeight = FontWeight.Normal,
