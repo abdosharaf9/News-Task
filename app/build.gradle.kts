@@ -101,4 +101,9 @@ dependencies {
 
     // Timber
     implementation(libs.timber)
+
+    // Room Database
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.room.compiler)
+    implementation(libs.androidx.room.ktx)
 }

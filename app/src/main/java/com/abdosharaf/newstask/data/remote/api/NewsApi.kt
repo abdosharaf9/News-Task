@@ -1,6 +1,6 @@
-package com.abdosharaf.newstask.data.api
+package com.abdosharaf.newstask.data.remote.api
 
-import com.abdosharaf.newstask.data.dto.TopHeadlinesDto
+import com.abdosharaf.newstask.data.remote.dto.TopHeadlinesDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 

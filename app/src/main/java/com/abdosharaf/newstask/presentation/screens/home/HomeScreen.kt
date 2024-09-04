@@ -54,6 +54,7 @@ private fun HomeScreenPreview() {
                         urlToImage = ""
                     )
                 },
+                isLoading = false,
                 resultCount = 10
             )
         )
@@ -174,6 +175,12 @@ private fun ArticlesSection(
         exit = fadeOut()
     ) {
         // TODO: Empty state!!
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(text = "No Results Found!")
+        }
     }
 
     AnimatedVisibility(

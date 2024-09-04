@@ -1,8 +1,8 @@
 package com.abdosharaf.newstask.core.utils
 
-sealed class ResultWrapper<out T> {
-    object Loading : ResultWrapper<Nothing>()
-    data class Success<out T>(val data: T) : ResultWrapper<T>()
-    data class Failure(val message: String = "") : ResultWrapper<Nothing>()
-    object NoInternet : ResultWrapper<Nothing>()
+sealed class ResultWrapper<T>(val data: T? = null) {
+    class Loading<T>(data: T? = null) : ResultWrapper<T>(data)
+    class Success<T>(data: T?) : ResultWrapper<T>(data)
+    class Failure<T>(data: T? = null) : ResultWrapper<T>(data)
+    class NoInternet<T>(data: T? = null) : ResultWrapper<T>(data)
 }

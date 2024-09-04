@@ -1,4 +1,4 @@
-package com.abdosharaf.newstask.data.dto
+package com.abdosharaf.newstask.data.remote.dto
 
 import com.abdosharaf.newstask.domain.model.DomainArticle
 import com.abdosharaf.newstask.domain.model.TopHeadlinesResponse

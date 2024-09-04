@@ -5,7 +5,7 @@ import com.abdosharaf.newstask.presentation.screens.home.components.Category
 import com.abdosharaf.newstask.presentation.screens.home.components.categoriesList
 
 data class HomeUIState(
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val isError: Boolean = false,
     val isNetworkError: Boolean = false,
     val categories: List<Category> = categoriesList,
