@@ -180,6 +180,31 @@ private fun ColumnScope.ContentSection(
                 .clip(RoundedCornerShape(16.dp))
         )
 
+        if (article.author.isNotEmpty()) {
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Edit,
+                    contentDescription = "Written by",
+                    tint = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.size(16.dp)
+                )
+
+                Text(
+                    text = article.author,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+        }
+
         if (article.description.isNotEmpty()) {
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -209,31 +234,6 @@ private fun ColumnScope.ContentSection(
                     color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
-            }
-
-            if (article.author.isNotEmpty()) {
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Edit,
-                        contentDescription = "Written by",
-                        tint = MaterialTheme.colorScheme.onBackground,
-                        modifier = Modifier.size(16.dp)
-                    )
-
-                    Text(
-                        text = article.author,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onBackground,
-                        modifier = Modifier.padding(start = 8.dp)
-                    )
-                }
             }
         }
     }

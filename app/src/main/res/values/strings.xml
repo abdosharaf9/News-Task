@@ -8,4 +8,7 @@
     <string name="share">Share</string>
     <string name="go_back">Go back</string>
     <string name="open_in_browser">Open In Browser</string>
+    <string name="published_on">Published on</string>
+    <string name="check_your_connection">Check your connection!</string>
+    <string name="no_results_found">No Results Found!</string>
 </resources>

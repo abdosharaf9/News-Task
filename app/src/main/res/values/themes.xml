@@ -2,4 +2,11 @@
 <resources>
 
     <style name="Theme.NewsTask" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="SplashTheme" parent="Theme.SplashScreen">
+        <item name="postSplashScreenTheme">@style/Theme.NewsTask</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_logo</item>
+        <item name="windowSplashScreenBackground">#474c72</item>
+    </style>
 </resources>

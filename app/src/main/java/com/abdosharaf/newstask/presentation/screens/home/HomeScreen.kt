@@ -3,6 +3,7 @@ package com.abdosharaf.newstask.presentation.screens.home
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -25,6 +27,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -55,7 +59,7 @@ private fun HomeScreenPreview() {
                     )
                 },
                 isLoading = false,
-                resultCount = 10
+                resultCount = 0
             )
         )
     }
@@ -110,6 +114,7 @@ private fun HomeScreenContent(
 
         ArticlesSection(
             isLoading = uiState.isLoading,
+            isNetworkError = uiState.isNetworkError,
             articles = uiState.articles,
             resultCount = uiState.resultCount,
             onArticleClicked = { navigateToDetails(it, uiState.selectedCategory.label) }
@@ -152,6 +157,7 @@ private fun CategoriesSection(
 @Composable
 private fun ArticlesSection(
     isLoading: Boolean,
+    isNetworkError: Boolean,
     articles: List<DomainArticle>,
     resultCount: Int,
     onArticleClicked: (DomainArticle) -> Unit
@@ -165,7 +171,9 @@ private fun ArticlesSection(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            CircularProgressIndicator()
+            CircularProgressIndicator(
+                strokeCap = StrokeCap.Round
+            )
         }
     }
 
@@ -174,12 +182,27 @@ private fun ArticlesSection(
         enter = fadeIn(),
         exit = fadeOut()
     ) {
-        // TODO: Empty state!!
-        Box(
+        Column(
             modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "No Results Found!")
+            Image(
+                painter = painterResource(id = R.drawable.black_logo),
+                contentDescription = null,
+                modifier = Modifier.size(100.dp)
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(
+                text = stringResource(
+                    id = if (isNetworkError) R.string.check_your_connection
+                    else R.string.no_results_found
+                ),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onBackground
+            )
         }
     }
 

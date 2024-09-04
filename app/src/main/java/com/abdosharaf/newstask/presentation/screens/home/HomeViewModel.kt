@@ -29,8 +29,10 @@ class HomeViewModel @Inject constructor(
     fun handleActions(action: HomeAction) {
         when (action) {
             is HomeAction.OnCategoryClicked -> {
-                _uiState.update { it.copy(selectedCategory = action.category) }
-                getTopHeadlines()
+                if (_uiState.value.selectedCategory != action.category) {
+                    _uiState.update { it.copy(selectedCategory = action.category) }
+                    getTopHeadlines()
+                }
             }
         }
     }
