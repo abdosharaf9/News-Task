@@ -171,8 +171,8 @@ private fun ColumnScope.ContentSection(
 
         MainImage(
             data = article.urlToImage,
-            placeholderImage = R.drawable.ic_launcher_background,
-            errorImage = R.drawable.ic_launcher_background,
+            errorImage = R.drawable.image_error_rectangle,
+            loaderSize = 50.dp,
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .fillMaxWidth()

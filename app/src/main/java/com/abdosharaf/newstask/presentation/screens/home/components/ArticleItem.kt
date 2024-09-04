@@ -70,8 +70,7 @@ fun ArticleItem(
     ) {
         MainImage(
             data = article.urlToImage,
-            placeholderImage = R.drawable.ic_launcher_background,
-            errorImage = R.drawable.ic_launcher_background,
+            errorImage = R.drawable.image_error_square,
             modifier = Modifier
                 .fillMaxHeight()
                 .aspectRatio(1f)
